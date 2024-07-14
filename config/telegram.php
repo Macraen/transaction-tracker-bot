@@ -40,8 +40,7 @@ return [
              * @see https://core.telegram.org/bots/api#update
              */
             'allowed_updates' => null,
-            'commands' => [
-                //Acme\Project\Commands\MyTelegramBot\BotCommand::class
+            'commands' =>
                 StartCommand::class
             ],
         ],
