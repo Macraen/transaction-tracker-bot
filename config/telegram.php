@@ -211,7 +211,7 @@ return [
     |
     */
     'shared_commands' => [
-         'start' => \App\Commands\StartCommand::class,
+         '/start' => \App\Commands\StartCommand::class,
 //         'stop' => Acme\Project\Commands\StopCommand::class,
         // 'status' => Acme\Project\Commands\StatusCommand::class,
     ],

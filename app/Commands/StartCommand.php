@@ -11,7 +11,7 @@ class StartCommand extends Command
      *
      * @var string
      */
-    protected string $name = 'start';
+    protected string $name = '/start';
 
     /**
      * The console command description.
