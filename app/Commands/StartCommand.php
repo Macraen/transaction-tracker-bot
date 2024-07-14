@@ -28,7 +28,7 @@ class StartCommand extends Command
     public function handle(): void
     {
         $this->replyWithChatAction([
-            'Action' => Actions::TYPING
+            'action' => Actions::TYPING
         ]);
         $this->replyWithMessage([
             'text' => 'Welcome to the club body'
