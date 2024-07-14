@@ -22,7 +22,7 @@ class WebHookController extends Controller
      * Handle the incoming request.
      * @throws TelegramSDKException
      */
-    public function __invoke(Request $request): \Illuminate\Http\JsonResponse
+    public function webhook(Request $request): \Illuminate\Http\JsonResponse
     {
 //        $webhook = $this->botsManager->bot()->commandsHandler(true);
         $update = Telegram::commandsHandler(true);
