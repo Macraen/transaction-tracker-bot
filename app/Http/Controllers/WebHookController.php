@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Telegram\Bot\BotsManager;
 use Telegram\Bot\Exceptions\TelegramSDKException;
 
