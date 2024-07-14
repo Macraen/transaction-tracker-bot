@@ -28,5 +28,6 @@ class StartCommand extends Command
         $this->replyWithMessage([
             'text' => 'Welcome to the club body'
         ]);
+
     }
 }
