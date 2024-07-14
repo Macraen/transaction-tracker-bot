@@ -29,7 +29,8 @@ class StartCommand extends Command
     {
         $this->replyWithChatAction([
             'Action' => Actions::TYPING
-        ])->replyWithMessage([
+        ]);
+        $this->replyWithMessage([
             'text' => 'Welcome to the club body'
         ]);
     }
