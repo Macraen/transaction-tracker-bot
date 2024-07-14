@@ -40,8 +40,8 @@ return [
              * @see https://core.telegram.org/bots/api#update
              */
             'allowed_updates' => null,
-            'commands' =>
-                StartCommand::class
+            'commands' => [
+                StartCommand::class,
             ],
         ],
 
