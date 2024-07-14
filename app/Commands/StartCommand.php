@@ -3,6 +3,7 @@
 namespace App\Commands;
 
 use Illuminate\Support\Facades\Log;
+use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
 
 class StartCommand extends Command
@@ -26,8 +27,9 @@ class StartCommand extends Command
      */
     public function handle(): void
     {
-        Log::info('StartCommand is called');
-        $this->replyWithMessage([
+        $this->replyWithChatAction([
+            'Action' => Actions::TYPING
+        ])->replyWithMessage([
             'text' => 'Welcome to the club body'
         ]);
     }

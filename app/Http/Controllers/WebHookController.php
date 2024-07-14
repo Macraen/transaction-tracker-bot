@@ -25,7 +25,6 @@ class WebHookController extends Controller
     public function webhook(Request $request): \Illuminate\Http\JsonResponse
     {
 //        $webhook = $this->botsManager->bot()->commandsHandler(true);
-        Log::info('Webhook Status: OK');
         $update = Telegram::commandsHandler(true);
 
         return response()->json(['status' => 'success']);
