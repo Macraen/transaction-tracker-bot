@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Telegram\Bot\BotsManager;
 use Telegram\Bot\Exceptions\TelegramSDKException;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class WebHookController extends Controller
 {
@@ -21,11 +22,12 @@ class WebHookController extends Controller
      * Handle the incoming request.
      * @throws TelegramSDKException
      */
-    public function __invoke(Request $request): \Illuminate\Foundation\Application|\Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+    public function __invoke(Request $request): \Illuminate\Http\JsonResponse
     {
-        $webhook = $this->botsManager->bot()->commandsHandler(true);
+//        $webhook = $this->botsManager->bot()->commandsHandler(true);
+        $update = Telegram::commandsHandler(true);
         Log::info('Webhook Status: OK');
 
-        return response(null, Response::HTTP_OK);
+        return response()->json(['status' => 'success']);
     }
 }
