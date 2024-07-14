@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Telegram\Bot\BotsManager;
 use Telegram\Bot\Exceptions\TelegramSDKException;
@@ -23,6 +24,7 @@ class WebHookController extends Controller
     public function __invoke(Request $request): \Illuminate\Foundation\Application|\Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
     {
         $webhook = $this->botsManager->bot()->commandsHandler(true);
+        Log::info('Webhook Status: OK');
 
         return response(null, Response::HTTP_OK);
     }
