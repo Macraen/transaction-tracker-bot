@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('webhook', [WebHookController::class, 'webhook'])
+Route::post('webhook', [WebHookController::class, 'webhook'])
     ->name('webhook.receive')
     ->middleware(LogWebhookRequests::class);
