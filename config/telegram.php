@@ -154,6 +154,7 @@ return [
     | Examples shown below are by the group type for you to understand each of them.
     */
     'command_groups' => [
+        'default' => [],
         /* // Group Type: 1
            'commmon' => [
                 Acme\Project\Commands\TodoCommand::class,
