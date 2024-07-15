@@ -25,8 +25,9 @@ class ProfileCommand extends Command
      */
     public function handle(): void
     {
-        $callbackQuery = $this->getUpdate()->getCallbackQuery();
-//        $callbackQuery = $this->getUpdate()->getRawResponse();
+//        $callbackQuery = $this->getUpdate()->getCallbackQuery();
+        $callbackQuery = $this->getUpdate()->getRawResponse();
+        dd($callbackQuery);
         $user = $callbackQuery->getFrom();
 
         $profileInfo = sprintf(
