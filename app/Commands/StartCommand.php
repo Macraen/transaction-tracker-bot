@@ -40,14 +40,6 @@ class StartCommand extends Command
                 Keyboard::button('4'),
                 Keyboard::button('5'),
                 Keyboard::button('6'),
-            ])
-            ->row([
-                Keyboard::button('7'),
-                Keyboard::button('8'),
-                Keyboard::button('9'),
-            ])
-            ->row([
-                Keyboard::button('0'),
             ]);
         $this->replyWithChatAction([
             'action' => Actions::TYPING
