@@ -28,11 +28,12 @@ class ProfileCommand extends Command
     {
 //        $callbackQuery = $this->getUpdate()->getCallbackQuery();
 //        $callbackQuery = $this->getUpdate()->getRawResponse();
-          $username = $this->getUpdate()->getMessage()->from->username;
+        $username = $this->getUpdate()->getMessage()->from->username;
+        $firstname = $this->getUpdate()->getMessage()->from->first_name;
 
         $profileInfo = sprintf(
-            "Ви: %s\nДата реєстрації: 25.06.2023",
-            $username
+            "Ім'я: %s\n Логін: %s\nДата реєстрації: 25.06.2023",
+            $username, $firstname
         );
 
         $this->replyWithMessage([
