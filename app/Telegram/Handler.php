@@ -6,6 +6,7 @@ use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\Button;
 use DefStudio\Telegraph\Keyboard\Keyboard;
+use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use Illuminate\Support\Stringable;
 
@@ -15,9 +16,9 @@ class Handler extends WebhookHandler
     {
         Telegraph::message('Вітаємо!')
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
-                Button::make("🗑️ Delete")->action("delete")->param('id', 1),
-                Button::make("📖 Mark as Read")->action("read")->param('id', 1),
-                Button::make("👀 Open")->url('https://test.it'),
+                ReplyButton::make("🗑️ Delete")->requestPoll(),
+                ReplyButton::make("📖 Mark as Read")->requestPoll(),
+                ReplyButton::make("👀 Open")->webApp('https://test.it'),
             ])->chunk(2))->send();
 
     }
