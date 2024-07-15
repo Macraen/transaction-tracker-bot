@@ -11,14 +11,14 @@ class ProfileCommand extends Command
      *
      * @var string
      */
-    protected $name = 'profile';
+    protected string $name = 'profile';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Інформація про користувача';
+    protected string $description = 'Інформація про користувача';
 
     /**
      * Execute the console command.
@@ -26,6 +26,7 @@ class ProfileCommand extends Command
     public function handle(): void
     {
         $callbackQuery = $this->getUpdate()->getCallbackQuery();
+//        $callbackQuery = $this->getUpdate()->getRawResponse();
         $user = $callbackQuery->getFrom();
 
         $profileInfo = sprintf(
