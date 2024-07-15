@@ -27,22 +27,16 @@ class ProfileCommand extends Command
     public function handle(): void
     {
 //        $callbackQuery = $this->getUpdate()->getCallbackQuery();
-        $callbackQuery = $this->getUpdate()->getRawResponse();
-        Log::info($callbackQuery);
-        dd($callbackQuery);
-        $user = $callbackQuery->getFrom();
+//        $callbackQuery = $this->getUpdate()->getRawResponse();
+          $username = $this->getUpdate()->getMessage()->from->username;
 
         $profileInfo = sprintf(
-            "ID: %s\nІм'я: %s\nПрізвище: %s\nUsername: @%s",
-            $user->getId(),
-            $user->getFirstName(),
-            $user->getLastName(),
-            $user->getUsername()
+            "Ви: %s\nДата реєстрації: 25.06.2023",
+            $username
         );
 
         $this->replyWithMessage([
             'text' => $profileInfo,
-            'chat_id' => $callbackQuery->getMessage()->getChat()->getId(),
         ]);
     }
 }
