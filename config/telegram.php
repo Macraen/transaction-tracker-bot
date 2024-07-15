@@ -1,5 +1,6 @@
 <?php
 
+use App\Commands\ProfileCommand;
 use App\Commands\StartCommand;
 use Telegram\Bot\Commands\HelpCommand;
 
@@ -42,6 +43,7 @@ return [
             'allowed_updates' => null,
             'commands' => [
                 StartCommand::class,
+                ProfileCommand::class
             ],
         ],
 
@@ -133,6 +135,7 @@ return [
     'commands' => [
         HelpCommand::class,
         StartCommand::class,
+        ProfileCommand::class
     ],
 
     /*
