@@ -2,6 +2,7 @@
 
 namespace App\Commands;
 
+use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Commands\Command;
 
 class ProfileCommand extends Command
@@ -27,7 +28,7 @@ class ProfileCommand extends Command
     {
 //        $callbackQuery = $this->getUpdate()->getCallbackQuery();
         $callbackQuery = $this->getUpdate()->getRawResponse();
-        dd($callbackQuery);
+        Log::info($callbackQuery);
         $user = $callbackQuery->getFrom();
 
         $profileInfo = sprintf(
