@@ -27,6 +27,29 @@ class WebHookController extends Controller
 //        $webhook = $this->botsManager->bot()->commandsHandler(true);
         $update = Telegram::commandsHandler(true);
 
+        if ($update->isType('callback_query')) {
+            $callbackQuery = $update->getCallbackQuery();
+            $data = $callbackQuery->getData();
+            $message = $callbackQuery->getMessage();
+
+            if ($data === 'profile') {
+                $user = $callbackQuery->getFrom();
+
+                $profileInfo = sprintf(
+                    "ID: %s\nІм'я: %s\nПрізвище: %s\nUsername: @%s",
+                    $user->getId(),
+                    $user->getFirstName(),
+                    $user->getLastName(),
+                    $user->getUsername()
+                );
+
+                Telegram::sendMessage([
+                    'chat_id' => $message->getChat()->getId(),
+                    'text' => $profileInfo,
+                ]);
+            }
+        }
+
         return response()->json(['status' => 'success']);
     }
 }
