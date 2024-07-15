@@ -39,7 +39,7 @@ class StartCommand extends Command
             ->row([
                 Keyboard::button('4'),
                 Keyboard::button('5'),
-                Keyboard::button(['text' => 'Профіль', 'callback_data' => 'profile']),
+//                Keyboard::inlineButton(['text' => 'Профіль', 'callback_data' => 'profile']),
             ]);
         $this->replyWithChatAction([
             'action' => Actions::TYPING
