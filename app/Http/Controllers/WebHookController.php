@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Telegram\Bot\BotsManager;
 use Telegram\Bot\Exceptions\TelegramSDKException;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use function PHPUnit\Framework\logicalOr;
 
 class WebHookController extends Controller
 {
@@ -25,29 +26,13 @@ class WebHookController extends Controller
     public function webhook(Request $request): \Illuminate\Http\JsonResponse
     {
 //        $webhook = $this->botsManager->bot()->commandsHandler(true);
-        $update = Telegram::commandsHandler(true);
+        $webhook = Telegram::commandsHandler(true);
 
-        if ($update->isType('callback_query')) {
-            $callbackQuery = $update->getCallbackQuery();
-            $data = $callbackQuery->getData();
-            $message = $callbackQuery->getMessage();
+        if ($webhook->isType('callback_query')) {
+            $data = $webhook->getRawResponse();
+            $message = $webhook->getMessage();
+            Log::error($data);
 
-            if ($data === 'profile') {
-                $user = $callbackQuery->getFrom();
-
-                $profileInfo = sprintf(
-                    "ID: %s\nІм'я: %s\nПрізвище: %s\nUsername: @%s",
-                    $user->getId(),
-                    $user->getFirstName(),
-                    $user->getLastName(),
-                    $user->getUsername()
-                );
-
-                Telegram::sendMessage([
-                    'chat_id' => $message->getChat()->getId(),
-                    'text' => $profileInfo,
-                ]);
-            }
         }
 
         return response()->json(['status' => 'success']);
