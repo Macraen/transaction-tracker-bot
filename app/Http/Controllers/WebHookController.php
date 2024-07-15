@@ -31,7 +31,7 @@ class WebHookController extends Controller
         if ($webhook->isType('callback_query')) {
             $data = $webhook->getRawResponse();
             $message = $webhook->getMessage();
-            Log::error($data);
+            Log::error($message);
 
         }
 
