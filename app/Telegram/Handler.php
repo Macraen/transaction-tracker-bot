@@ -6,7 +6,7 @@ use DefStudio\Telegraph\Handlers\WebhookHandler;
 
 class Handler extends WebhookHandler
 {
-    public function aboutMe(): void
+    public function profile(): void
     {
         $this->reply('ПРОБИЛА');
     }
