@@ -32,8 +32,8 @@ class ProfileCommand extends Command
         $firstname = $this->getUpdate()->getMessage()->from->first_name;
 
         $profileInfo = sprintf(
-            "Ім'я: %s\n Логін: %s\nДата реєстрації: 25.06.2023",
-            $username, $firstname
+            "IНФОРМАЦІЯ ПРО АККАУНТ\n\nІм'я: %s\nЛогін: %s\nДата реєстрації: 25.06.2023",
+            $firstname, $username
         );
 
         $this->replyWithMessage([
