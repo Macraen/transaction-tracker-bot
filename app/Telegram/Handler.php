@@ -6,14 +6,15 @@ use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\Button;
 use DefStudio\Telegraph\Keyboard\Keyboard;
+use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use Illuminate\Support\Stringable;
 
 class Handler extends WebhookHandler
 {
     public function start(): void
     {
-        Telegraph::message('hello world')
-            ->keyboard(Keyboard::make()->buttons([
+        Telegraph::message('Вітаємо!')
+            ->replyKeyboard(ReplyKeyboard::make()->buttons([
                 Button::make("🗑️ Delete")->action("delete")->param('id', 1),
                 Button::make("📖 Mark as Read")->action("read")->param('id', 1),
                 Button::make("👀 Open")->url('https://test.it'),
@@ -22,7 +23,7 @@ class Handler extends WebhookHandler
     }
     public function profile(): void
     {
-        $this->reply('ПРОБИЛА');
+        $this->reply('Вітаю!');
     }
 
     protected function handleUnknownCommand(Stringable $text): void
