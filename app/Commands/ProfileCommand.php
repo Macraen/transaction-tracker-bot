@@ -29,6 +29,7 @@ class ProfileCommand extends Command
 //        $callbackQuery = $this->getUpdate()->getCallbackQuery();
         $callbackQuery = $this->getUpdate()->getRawResponse();
         Log::info($callbackQuery);
+        dd($callbackQuery);
         $user = $callbackQuery->getFrom();
 
         $profileInfo = sprintf(
