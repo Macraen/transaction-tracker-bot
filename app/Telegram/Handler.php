@@ -24,10 +24,6 @@ class Handler extends WebhookHandler
             ])->chunk(2))->send();
 
     }
-    public function profile(): void
-    {
-        $this->reply('Вітаю!');
-    }
 
     protected function handleUnknownCommand(Stringable $text): void
     {
@@ -38,7 +34,19 @@ class Handler extends WebhookHandler
     {
         if ($text == "Профіль")
             $this->profile();
+        elseif ($text == "Додати адресу")
+            $this->addAddress();
         else
             $this->reply('Не розумію про що ти (');
+    }
+
+    public function profile(): void
+    {
+        $this->reply('Вітаю!');
+    }
+
+    public function addAddress(): void
+    {
+        $this->reply('Введіть адресу гаманця');
     }
 }
