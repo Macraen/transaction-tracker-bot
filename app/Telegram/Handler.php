@@ -15,21 +15,18 @@ class Handler extends WebhookHandler
 {
     public function start(): void
     {
-        $chat = TelegraphChat::find($this->chatid());
-
-        $keyboard = [
-            [['text' => 'Команда 1', 'callback_data' => 'command_1']],
-            [['text' => 'Команда 2', 'callback_data' => 'command_2']],
-        ];
-
-        $chat->message('Вітаємо! Оберіть команду:')
-            ->keyboard($keyboard)
-            ->send();
 //        Telegraph::message('Вітаємо!')
 //            ->replyKeyboard(ReplyKeyboard::make()->buttons([
 //                ReplyButton::make("📖 Mark as Read")->requestPoll(),
 //                ReplyButton::make("👀 Profile"),
 //            ])->chunk(2))->send();
+        Telegraph::message('hello world')
+            ->replyKeyboard(ReplyKeyboard::make()->buttons([
+                Button::make('Delete')->action('delete')->param('id', '42'),
+                Button::make('open')->url('https://test.it'),
+                Button::make('Web App')->webApp('https://web-app.test.it'),
+                Button::make('Login Url')->loginUrl('https://loginUrl.test.it'),
+            ]))->send();
 
     }
     public function profile(): void
