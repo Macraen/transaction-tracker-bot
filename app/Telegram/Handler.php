@@ -33,7 +33,7 @@ class Handler extends WebhookHandler
                 ReplyButton::make("Всі адреси"),
                 ReplyButton::make("Повідомлення"),
                 ReplyButton::make("Профіль"),
-            ])->chunk(2))->send();
+            ])->resize()->chunk(2))->send();
 
     }
 
@@ -49,7 +49,7 @@ class Handler extends WebhookHandler
         elseif ($text == "Додати адресу")
             $this->addAddress();
         elseif ($this->walletServices($text)['is_wallet'])
-            Telegraph::html("Адресу успішно додано! <br> Мережа: ".$this->walletServices($text)['network'])->send();
+            $this->reply('Адресу успішно додано! Мережа: '.$this->walletServices($text)['network']);
         else
             $this->reply('Не розумію про що ти (');
     }
