@@ -15,18 +15,11 @@ class Handler extends WebhookHandler
 {
     public function start(): void
     {
-//        Telegraph::message('Вітаємо!')
-//            ->replyKeyboard(ReplyKeyboard::make()->buttons([
-//                ReplyButton::make("📖 Mark as Read")->requestPoll(),
-//                ReplyButton::make("👀 Profile"),
-//            ])->chunk(2))->send();
-        Telegraph::message('hello world')
+        Telegraph::message('Вітаємо!')
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
-                Button::make('Delete')->action('delete')->param('id', '42'),
-                Button::make('open')->url('https://test.it'),
-                Button::make('Web App')->webApp('https://web-app.test.it'),
-                Button::make('Login Url')->loginUrl('https://loginUrl.test.it'),
-            ]))->send();
+                ReplyButton::make("📖 Mark as Read")->requestPoll(),
+                ReplyButton::make("👀 Profile"),
+            ])->chunk(2))->send();
 
     }
     public function profile(): void
