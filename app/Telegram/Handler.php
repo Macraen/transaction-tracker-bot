@@ -49,9 +49,9 @@ class Handler extends WebhookHandler
         elseif ($text == "Додати адресу")
             $this->addAddress();
         elseif ($this->walletServices($text)['is_wallet'])
-            $this->reply('Адресу успішно додано!');
+            $this->reply('Адресу успішно додано!\n Мережа: '.$this->walletServices($text)['network']);
         else
-            $this->reply('Не розумію про що ти ('.$this->walletServices($text)['is_wallet']);
+            $this->reply('Не розумію про що ти (');
     }
 
     public function profile(): void
