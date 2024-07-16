@@ -9,14 +9,13 @@ use DefStudio\Telegraph\Keyboard\Keyboard;
 use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use DefStudio\Telegraph\Models\TelegraphChat;
-use Illuminate\Http\Request;
 use Illuminate\Support\Stringable;
 
 class Handler extends WebhookHandler
 {
-    public function start(Request $request): void
+    public function start(): void
     {
-        $chat = TelegraphChat::find($request->chat_id);
+        $chat = TelegraphChat::find($this->chatid());
 
         $keyboard = [
             [['text' => 'Команда 1', 'callback_data' => 'command_1']],
