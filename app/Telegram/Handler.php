@@ -35,7 +35,7 @@ class Handler extends WebhookHandler
     protected function handleChatMessage(Stringable $text): void
     {
         if ($text == "👀 Profile")
-            $this->reply('Профіль');
+            $this->profile();
         else
             $this->reply('Не розумію про що ти (');
     }
