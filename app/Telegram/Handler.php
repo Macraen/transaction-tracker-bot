@@ -17,9 +17,8 @@ class Handler extends WebhookHandler
         Telegraph::message('Вітаємо!')
             ->keyboard(Keyboard::make()->buttons([
                 Button::make("🗑️ Delete")->action('profile'),
-                Button::make("📖 Mark as Read"),
-                Button::make("👀 Open")->webApp('https://test.it'),
-            ])->chunk(2))->send();
+                Button::make("📖 Mark as Read")->url('https://test.it'),
+            ]))->send();
 
     }
     public function profile(): void
