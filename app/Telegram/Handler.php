@@ -17,8 +17,10 @@ class Handler extends WebhookHandler
     {
         Telegraph::message('Вітаємо!')
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
-                ReplyButton::make("📖 Mark as Read")->requestPoll(),
-                ReplyButton::make("👀 Profile"),
+                ReplyButton::make("Додати адресу"),
+                ReplyButton::make("Всі адреси"),
+                ReplyButton::make("Повідомлення"),
+                ReplyButton::make("Профіль"),
             ])->chunk(2))->send();
 
     }
@@ -34,7 +36,7 @@ class Handler extends WebhookHandler
 
     protected function handleChatMessage(Stringable $text): void
     {
-        if ($text == "👀 Profile")
+        if ($text == "Профіль")
             $this->profile();
         else
             $this->reply('Не розумію про що ти (');
