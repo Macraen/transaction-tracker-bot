@@ -30,7 +30,7 @@ class Handler extends WebhookHandler
 
     public function start(): void
     {
-        Telegraph::message('Вітаємо!'.$this->chatid())
+        Telegraph::message('Вітаємо!')
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
                 ReplyButton::make("Додати адресу"),
                 ReplyButton::make("Всі адреси"),
