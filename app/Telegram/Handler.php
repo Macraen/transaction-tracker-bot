@@ -30,14 +30,10 @@ class Handler extends WebhookHandler
 
     public function start(): void
     {
-//        Telegraph::message('Вітаємо!')
-//            ->replyKeyboard(ReplyKeyboard::make()->buttons([
-//                ReplyButton::make("Додати адресу"),
-//                ReplyButton::make("Всі адреси"),
-//                ReplyButton::make("Повідомлення"),
-//                ReplyButton::make("Профіль"),
-//            ])->resize()->chunk(2))->send();
-        $this->reply('Невідома команда (');
+        Telegraph::message('Вітаємо!')
+            ->replyKeyboard(ReplyKeyboard::make()->buttons([
+                ReplyButton::make("Додати адресу"),
+            ])->resize()->chunk(2))->send();
     }
 
     protected function handleUnknownCommand(Stringable $text): void
