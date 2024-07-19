@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('crypto_addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('chat_id')->index();
-            $table->foreign('chat_id')->references('chat_id')->on('telegraph_chats')->onDelete('cascade');
+            $table->foreign('chat_id')
+                ->references('chat_id')
+                ->on('telegraph_chats')
+                ->onDelete('CASCADE');
             $table->string('currency');
             $table->string('address');
             $table->timestamps();
