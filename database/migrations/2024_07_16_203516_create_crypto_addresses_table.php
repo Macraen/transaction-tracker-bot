@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('crypto_addresses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('chat_id')->index();
+            $table->foreign('chat_id')->references('id')->on('telegraph_chats')->onDelete('cascade');
             $table->string('currency');
             $table->string('address');
             $table->timestamps();
