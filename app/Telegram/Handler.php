@@ -2,6 +2,7 @@
 
 namespace App\Telegram;
 
+use App\Models\User;
 use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\Button;
@@ -9,6 +10,8 @@ use DefStudio\Telegraph\Keyboard\Keyboard;
 use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use DefStudio\Telegraph\Models\TelegraphChat;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 
 class Handler extends WebhookHandler
@@ -27,7 +30,7 @@ class Handler extends WebhookHandler
 
     public function start(): void
     {
-        Telegraph::message('Вітаємо!')
+        Telegraph::message('Вітаємо!'.$this->chatid())
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
                 ReplyButton::make("Додати адресу"),
                 ReplyButton::make("Всі адреси"),
@@ -49,7 +52,11 @@ class Handler extends WebhookHandler
         elseif ($text == "Додати адресу")
             $this->addAddress();
         elseif ($this->walletServices($text)['is_wallet'])
-
+//            $user = User::create([
+//                'name' => $request->input('full_name'),
+//                'email' => $request->input('email'),
+//                'password' => Hash::make(Str::random(16)),
+//            ]);
             $this->reply('Адресу успішно додано! Мережа: '.$this->walletServices($text)['network']);
         else
             $this->reply('Не розумію про що ти (');
