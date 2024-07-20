@@ -2,6 +2,7 @@
 
 namespace App\Telegram;
 
+use App\Models\CryptoAddress;
 use App\Models\User;
 use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
@@ -51,14 +52,19 @@ class Handler extends WebhookHandler
             $this->profile();
         elseif ($text == "Додати адресу")
             $this->addAddress();
-        elseif ($this->walletServices($text)['is_wallet'])
-//            $user = User::create([
-//                'name' => $request->input('full_name'),
-//                'email' => $request->input('email'),
-//                'password' => Hash::make(Str::random(16)),
-//            ]);
-            $this->reply('Адресу успішно додано! Мережа: '.$this->walletServices($text)['network']);
-        else
+        elseif ($this->walletServices($text)['is_wallet']) {
+            $checker = CryptoAddress::where('address', $text)
+                ->where('chat_id', $this->chat->chat_id)->save();
+            if (empty($checker)) {
+                CryptoAddress::create([
+                    'chat_id' => $this->chat->chat_id,
+                    'currency' => $this->walletServices($text)['network'],
+                    'address' => $text
+                ]);
+                $this->reply('Адресу успішно додано! Мережа: ' . $this->walletServices($text)['network']);
+            } else
+                $this->reply('Помилка! Ви вже відстежуєте цю адресу!');
+        } else
             $this->reply('Не розумію про що ти (');
     }
 
