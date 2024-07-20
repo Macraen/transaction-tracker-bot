@@ -30,13 +30,13 @@ class Handler extends WebhookHandler
 
     public function start(): void
     {
-        Telegraph::message('Вітаємо!')
+        $this->reply(Telegraph::message('Вітаємо!')
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
                 ReplyButton::make("Додати адресу"),
                 ReplyButton::make("Всі адреси"),
                 ReplyButton::make("Повідомлення"),
                 ReplyButton::make("Профіль"),
-            ])->chunk(2))->send();
+            ])->chunk(2))->send());
     }
 
     protected function handleUnknownCommand(Stringable $text): void
