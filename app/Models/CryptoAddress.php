@@ -12,9 +12,8 @@ class CryptoAddress extends Model
     protected $table = 'crypto_addresses';
 
     protected $fillable = [
-        'user_id',
-        'profession',
-        'education',
-        'biography'
+        'chat_id',
+        'currency',
+        'address'
     ];
 }
