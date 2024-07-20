@@ -53,9 +53,12 @@ class Handler extends WebhookHandler
         elseif ($text == "Додати адресу")
             $this->addAddress();
         elseif ($this->walletServices($text)['is_wallet']) {
+            $this->reply('1');
             $checker = CryptoAddress::where('address', $text)
                 ->where('chat_id', $this->chat->chat_id)->first();
+            $this->reply('2');
             if (empty($checker)) {
+                $this->reply('3');
                 CryptoAddress::create([
                     'chat_id' => $this->chat->chat_id,
                     'currency' => $this->walletServices($text)['network'],
