@@ -56,11 +56,11 @@ class Handler extends WebhookHandler
             $checker = CryptoAddress::where('address', $text)
                 ->where('chat_id', $this->chat->chat_id)->first();
             if (empty($checker)) {
-                $address = new CryptoAddress();
-                $address->chat_id = $this->chat->chat_id;
-                $address->currency = $this->walletServices($text)['network'];
-                $address->address = $text;
-                $address->save();
+                CryptoAddress::create([
+                    'chat_id' => $this->chat->chat_id,
+                    'currency' => $this->walletServices($text)['network'],
+                    'address' => $text
+                ]);
                 $this->reply('Адресу успішно додано! Мережа: ' . $this->walletServices($text)['network']);
             } else
                 $this->reply('Помилка! Ви вже відстежуєте цю адресу!');
