@@ -30,7 +30,8 @@ class Handler extends WebhookHandler
 
     public function start(): void
     {
-        Telegraph::message('Вітаємо!')
+        Telegraph::chat($this->chatid())
+            ->message('Вітаємо!')
             ->replyKeyboard(ReplyKeyboard::make()->buttons([
                 ReplyButton::make("Додати адресу"),
                 ReplyButton::make("Всі адреси"),
@@ -48,8 +49,6 @@ class Handler extends WebhookHandler
     {
         if ($text == "Профіль")
             $this->profile();
-        elseif ($text == "/start")
-            $this->start();
         elseif ($text == "Додати адресу")
             $this->addAddress();
         elseif ($this->walletServices($text)['is_wallet'])
