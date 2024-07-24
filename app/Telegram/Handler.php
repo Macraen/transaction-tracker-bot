@@ -38,7 +38,7 @@ class Handler extends WebhookHandler
                 ReplyButton::make("Всі адреси"),
                 ReplyButton::make("Повідомлення"),
                 ReplyButton::make("Профіль"),
-            ])->chunk(2))->send();
+            ])->chunk(2)->resize())->send();
     }
 
     protected function handleUnknownCommand(Stringable $text): void
